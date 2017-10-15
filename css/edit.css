@@ -1,0 +1,37 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.CodeMirror {
+  border-right: 1px solid #ddd;
+  min-height: 100%;
+}
+
+#editor {
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-right: 0;
+}
+
+#preview {
+  min-height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  word-wrap: break-word;
+}
+
+#site-content {
+  flex: 1;
+  margin-right: 0;
+}
+
+#site-navigation {
+  margin-top: 0;
+  box-shadow: none;
+}
+
+#site-footer {
+  margin-bottom: 0;
+}

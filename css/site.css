@@ -1,38 +1,15 @@
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+.markdown-body code,
+.markdown-body pre {
+  font-family: monospace !important;
 }
 
-.CodeMirror {
-  border-right: 1px solid #ddd;
-  min-height: 100%;
-}
-
-#editor {
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-right: 0;
-}
-
-#preview {
-  min-height: 100%;
-  overflow-y: scroll;
-  word-wrap: break-word;
-}
-
-#preview > pre {
-  padding: 16px;
-  background-color: #f6f8fa;
-}
-
-#site-content {
-  flex: 1;
-  margin-right: 0;
-}
-
-#site-navigation {
-  margin-top: 0;
-  box-shadow: none;
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6,
+.markdown-body p {
+  font-family: Roboto, sans-serif !important;
 }
 

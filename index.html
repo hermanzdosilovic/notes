@@ -16,6 +16,13 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/dialog/dialog.min.css" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/dialog/dialog.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/search/search.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/search/searchcursor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/addon/selection/active-line.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/keymap/vim.min.js"></script>
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.9.0/github-markdown.min.css" rel="stylesheet" />
 
@@ -39,9 +46,15 @@
     <div class="left menu">
       <div class="item">
         <div class="ui icon buttons">
-        <button id="saveBtn" class="ui icon blue button site-popup" data-content="Save (Ctrl+S)" data-position="bottom center" onclick="saveNote()"><i class="save icon"></i></button>
-        <button id="downloadBtn" class="ui icon blue button site-popup" data-content="Download" data-position="bottom center" onclick="downloadNote()"><i class="download icon"></i></button>
-        <button id="shareBtn" class="ui icon blue button site-popup" data-content="Share" data-position="bottom center" onclick="shareNote()"><i class="share alternate icon"></i></button>
+          <button id="saveBtn" class="ui icon blue button site-popup" data-content="Save (Ctrl+S)" data-position="bottom center" onclick="saveNote()"><i class="save icon"></i></button>
+          <button id="downloadBtn" class="ui icon blue button site-popup" data-content="Download" data-position="bottom center" onclick="downloadNote()"><i class="download icon"></i></button>
+          <button id="shareBtn" class="ui icon blue button site-popup" data-content="Share" data-position="bottom center" onclick="shareNote()"><i class="share alternate icon"></i></button>
+        </div>
+      </div>
+      <div class="item">
+        <div class="ui slider checkbox">
+          <input id="vimCheckbox" type="checkbox" tabindex="0" class="hidden"/>
+          <label>Vim Mode</label>
         </div>
       </div>
     </div>

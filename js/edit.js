@@ -1,7 +1,8 @@
 $(document).ready(function() {
   editor = CodeMirror.fromTextArea($("textarea")[0], {
     lineNumbers: true,
-    lineWrapping: true
+    lineWrapping: true,
+    keyMap: Storage.get("keyMap") || "default"
   });
   
   editor.on("change", function(instance) {
@@ -12,6 +13,10 @@ $(document).ready(function() {
   $(".site-popup").popup({
     inline: true
   });
+  $('.ui.checkbox').checkbox({
+    onChange: toggleVim
+  });
+  $("#vimCheckbox").attr("checked", Storage.get("keyMap") == "vim");
 
   $("body").keydown(function(e) {
     var keyCode = e.keyCode || e.which;
@@ -30,6 +35,12 @@ $(document).ready(function() {
 
   renderPreview(editor.getValue(), $("#preview")[0]);
 });
+
+function toggleVim() {
+  var keyMap = document.getElementById("vimCheckbox").checked ? "vim" : "default";
+  Storage.set("keyMap", keyMap);
+  editor.setOption("keyMap", keyMap);
+}
 
 function saveNote(callback = function(){}) {
   var saveBtn = $("#saveBtn")[0];

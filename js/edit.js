@@ -25,6 +25,7 @@ $(document).ready(function() {
     loadNote();
   } else {
     editor.setValue(Storage.get("note") || "");
+    $("#shareBtn").attr("disabled", true);
   }
 
   renderPreview(editor.getValue(), $("#preview")[0]);
@@ -36,6 +37,7 @@ function saveNote(callback = function(){}) {
 
   Cloud.save(editor.getValue(), function(id) {
       saveBtn.classList.remove("loading");
+      $("#shareBtn").attr("disabled", false);
       window.history.replaceState(null, null, location.origin + location.pathname + "?" + id);
       callback();
     }, function() {

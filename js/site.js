@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  forceHTTPS();
+});
+
 function getIdFromURI() {
   return location.search.substr(1).trim();
 }
@@ -18,4 +22,10 @@ function showError(header, content) {
   modalContent.html(content);
 
   modal.modal("show");
+}
+
+function forceHTTPS() {
+  if (location.protocol == "http:") {
+    location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+  }
 }

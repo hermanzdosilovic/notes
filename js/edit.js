@@ -10,6 +10,8 @@ $(document).ready(function() {
     Storage.set("note", instance.getValue());
   });
 
+  CodeMirror.commands.save = saveNote;
+
   $(".site-popup").popup({
     inline: true
   });

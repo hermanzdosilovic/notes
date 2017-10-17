@@ -61,8 +61,5 @@ function downloadNote() {
 }
 
 function shareNote() {
-  saveNote(function() {
-    var href = location.href.substr(0, location.href.lastIndexOf("/") + 1) + "view.html?" + getIdFromURI();
-    window.open(href, "_blank");
-  });
+  window.open(location.href.substr(0, location.href.lastIndexOf("/") + 1) + "view.html?" + getIdFromURI(), "_blank");
 }

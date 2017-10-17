@@ -1,8 +1,4 @@
-.markdown-body code,
-.markdown-body pre {
-  font-family: monospace !important;
-}
-
+.markdown-body,
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
@@ -10,6 +6,24 @@
 .markdown-body h5,
 .markdown-body h6,
 .markdown-body p {
-  font-family: Roboto, sans-serif !important;
+  font-family: serif, Roboto, sans-serif !important;
 }
 
+.markdown-body code,
+.markdown-body pre {
+  font-family: monospace !important;
+}
+
+.markdown-body h1,
+.markdown-body h2 {
+  border-bottom: none;
+}
+
+.markdown-body th:empty {
+  display: none;
+}
+
+.markdown-body hr {
+  height: 1px;
+  border: none;
+}

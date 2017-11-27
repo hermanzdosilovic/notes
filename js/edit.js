@@ -2,7 +2,8 @@ $(document).ready(function() {
   editor = CodeMirror.fromTextArea($("textarea")[0], {
     lineNumbers: true,
     lineWrapping: true,
-    keyMap: Storage.get("keyMap") || "default"
+    keyMap: Storage.get("keyMap") || "default",
+    mode: "text/x-markdown"
   });
   
   editor.on("change", function(instance) {

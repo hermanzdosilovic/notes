@@ -36,8 +36,6 @@ $(document).ready(function() {
     $("#shareBtn").attr("disabled", true);
     $("#downloadPdfBtn").attr("disabled", true);
   }
-
-  renderPreview(editor.getValue(), $("#preview")[0]);
 });
 
 function toggleVim() {
@@ -56,7 +54,11 @@ function loadNote() {
   });
 }
 
-function saveNote(callback = function(){}) {
+function saveNote(callback) {
+  if (typeof callback !== "function") {
+    callback = function(){};
+  }
+
   var saveBtn = $("#saveBtn")[0];
   saveBtn.classList.add("loading"); 
 

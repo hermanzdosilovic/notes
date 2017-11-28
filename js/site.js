@@ -1,3 +1,5 @@
+var mathjaxCache = {};
+
 hljs.registerLanguage("text", function () { return {}; });
 
 var md = new Remarkable({
@@ -101,8 +103,13 @@ md.use(function (md) {
       });
     } catch (err) {
       var tag = displayMode ? "$$" : "$";
-      // return `<span class="math">${tag}${content}${tag}</span>`;
-      return `<code style="background-color: red">${err.message}</code>`;
+      var innerHTML = mathjaxCache[tag + content.trim() + tag];
+
+      if (innerHTML == undefined) {
+        return `<span class="math">${tag}${content}${tag}</span>`;
+      }
+
+      return `<span class="cached-math">${innerHTML}</span>`;
     }
   };
 });
@@ -113,7 +120,19 @@ function getIdFromURI() {
 
 function renderPreview(noteContent, targetElement) {
   targetElement.innerHTML = md.render(noteContent);
-  // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+
+  var mathElements = targetElement.getElementsByClassName("math");
+  for (var i = 0; i < mathElements.length; i++) {
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, mathElements[i], [function(mathElement) {
+      var scriptElement = mathElement.getElementsByTagName("script")[0];
+      if (scriptElement == undefined) {
+        return;
+      }
+      var tag = scriptElement.type == "math/tex" ? "$" : "$$";
+      var content = scriptElement.innerHTML.trim();
+      mathjaxCache[tag + content + tag] = mathElement.innerHTML;
+    }, mathElements[i]]]);
+  }
 }
 
 function showError(header, content) {

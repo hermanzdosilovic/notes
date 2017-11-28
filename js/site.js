@@ -113,7 +113,7 @@ function getIdFromURI() {
 
 function renderPreview(noteContent, targetElement) {
   targetElement.innerHTML = md.render(noteContent);
-  MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+  // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
 }
 
 function showError(header, content) {

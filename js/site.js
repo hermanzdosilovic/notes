@@ -1,5 +1,3 @@
-var cache = {};
-
 hljs.registerLanguage("text", function () { return {}; });
 
 var md = new Remarkable({
@@ -67,22 +65,11 @@ md.use(function (md) {
 
     var suffixDollarCount = countDollars(src, k, posMax);
 
-    var dollars;
-
     if (suffixDollarCount == 0) {
       return false;
     }
 
-    if (prefixDollarCount == 1 && suffixDollarCount == 0) {
-      return false;
-    } else if (prefixDollarCount >= 4 && suffixDollarCount == 0) {
-      dollars = 2;
-    } else if (prefixDollarCount <= 3 && suffixDollarCount == 0) {
-      dollars = 1;
-    } else { // prefixDollarCount >= 1 && suffixDollarCount >= 1
-      dollars = Math.min(Math.min(2, prefixDollarCount), Math.min(2, suffixDollarCount));
-    }
-
+    var dollars = Math.min(Math.min(2, prefixDollarCount), Math.min(2, suffixDollarCount));
     var displayMode = dollars == 2;
     var content = src.slice(pos + dollars, k + suffixDollarCount - dollars);
 
@@ -113,9 +100,9 @@ md.use(function (md) {
         displayMode: displayMode
       });
     } catch (err) {
-      var openingTag = displayMode ? "$$" : "$";
-      var closingTag = displayMode ? "$$" : "$";
-      return `<span class="math">${openingTag}${content}${closingTag}</span>`;
+      var tag = displayMode ? "$$" : "$";
+      // return `<span class="math">${tag}${content}${tag}</span>`;
+      return `<code style="background-color: red">${err.message}</code>`;
     }
   };
 });

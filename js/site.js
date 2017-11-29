@@ -19,8 +19,15 @@ var md = new Remarkable({
 });
 md.set({
   html: true,
-  breaks: false
+  breaks: false,
+  linkify: true
 });
+md.inline.ruler.enable([
+  'ins',
+  'mark',
+  'sub',
+  'sup'
+]);
 
 md.use(function (md) {
   md.inline.ruler.push("math", function (state, checkMode) {
@@ -43,8 +50,6 @@ md.use(function (md) {
 
     if (isEscaped(src, pos)) {
       return false;
-    } else if (checkMode) {
-      return true;
     }
 
     var countDollars = function (src, pos, posMax) {
@@ -57,6 +62,7 @@ md.use(function (md) {
 
     var prefixDollarCount = countDollars(src, pos, posMax);
     var k = pos + prefixDollarCount;
+
     while (k < posMax) {
       if (src[k] == "$" && !isEscaped(src, k)) {
         break;
@@ -69,6 +75,8 @@ md.use(function (md) {
 
     if (suffixDollarCount == 0) {
       return false;
+    } else if (checkMode) {
+      return true;
     }
 
     var dollars = Math.min(Math.min(2, prefixDollarCount), Math.min(2, suffixDollarCount));

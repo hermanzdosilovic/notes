@@ -35,3 +35,7 @@ body {
 #site-footer {
   margin-bottom: 0;
 }
+
+.site-hidden {
+  display: none !important;
+}

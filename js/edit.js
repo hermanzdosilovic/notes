@@ -1,21 +1,25 @@
+var disableRendering = false;
+var editor;
+
 $(document).ready(function() {
   editor = CodeMirror.fromTextArea($("textarea")[0], {
     lineNumbers: true,
     lineWrapping: true,
+    gutter: true,
     keyMap: Storage.get("keyMap") || "default",
     mode: "text/x-markdown"
   });
   
   editor.on("change", function(instance) {
-    renderPreview(instance.getValue(), $("#preview")[0]);
+    if (!disableRendering) {
+      renderPreview(instance.getValue(), $("#preview")[0]);
+    }
     Storage.set("note", instance.getValue());
   });
 
   CodeMirror.commands.save = saveNote;
 
-  $(".site-popup").popup({
-    inline: true
-  });
+  $(".site-popup").popup();
   $('.ui.checkbox').checkbox({
     onChange: toggleVim
   });
@@ -89,4 +93,25 @@ function shareNote() {
 
 function getShareUrl() {
   return location.href.substr(0, location.href.lastIndexOf("/") + 1) + "view.html?" + getIdFromURI();
+}
+
+function changeView(btnId) {
+  $("#writeBtn").removeClass("basic");
+  $("#splitBtn").removeClass("basic");
+  $(`#${btnId}`).addClass("basic");
+
+  if (btnId == "writeBtn") {
+    disableRendering = true;
+    $("#preview").addClass("site-hidden");
+    $("#editor").removeClass("site-hidden");
+    $("#editor").addClass("sixteen wide");
+  } else if (btnId == "splitBtn") {
+    if (disableRendering == true) {
+      disableRendering = false;
+      renderPreview(editor.getValue(), $("#preview")[0]);
+    }
+    $("#preview").removeClass("site-hidden");
+    $("#editor").removeClass("site-hidden");
+    $("#editor").removeClass("sixteen wide");
+  }
 }

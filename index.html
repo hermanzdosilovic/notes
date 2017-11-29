@@ -61,14 +61,20 @@
     <div class="left menu">
       <div class="item">
         <div class="ui icon buttons">
-          <button id="saveBtn" class="ui icon blue button site-popup" data-content="Save (Ctrl+S)" data-position="bottom center" onclick="saveNote()"><i class="save icon"></i></button>
-          <button id="downloadBtn" class="ui icon blue button site-popup" data-content="Download Markdown" data-variation="wide" data-position="bottom center" onclick="downloadNote()"><i class="download icon"></i></button>
-          <button id="downloadPdfBtn" class="ui icon blue button site-popup" data-content="Download PDF" data-position="bottom center" onclick="downloadPdf()"><i class="file pdf outline icon"></i></button>
-          <button id="shareBtn" class="ui icon blue button site-popup" data-content="Share" data-position="bottom center" onclick="shareNote()"><i class="share alternate icon"></i></button>
+          <button id="saveBtn" class="ui icon button site-popup" data-content="Save (Ctrl+S)" data-position="bottom center" onclick="saveNote()"><i class="save icon"></i></button>
+          <button id="downloadBtn" class="ui icon button site-popup" data-content="Download Markdown" data-variation="wide" data-position="bottom center" onclick="downloadNote()"><i class="download icon"></i></button>
+          <button id="downloadPdfBtn" class="ui icon button site-popup" data-content="Download PDF" data-position="bottom center" onclick="downloadPdf()"><i class="file pdf outline icon"></i></button>
+          <button id="shareBtn" class="ui icon button site-popup" data-content="Share" data-position="bottom center" onclick="shareNote()"><i class="share alternate icon"></i></button>
         </div>
       </div>
       <div class="item">
-        <div class="ui slider checkbox">
+        <div class="ui icon buttons">
+          <button id="writeBtn" class="ui icon button site-popup" data-content="Editor View" data-position="bottom center" onclick="changeView('writeBtn')"><i class="write icon"></i></button>
+          <button id="splitBtn" class="ui icon basic button site-popup" data-content="Split View" data-position="bottom center" onclick="changeView('splitBtn')"><i class="columns icon"></i></button>
+        </div>
+      </div>
+      <div class="item">
+        <div class="ui checkbox">
           <input id="vimCheckbox" type="checkbox" tabindex="0" class="hidden"/>
           <label>Vim Mode</label>
         </div>

@@ -1,6 +1,6 @@
 # Markdown Notes
 
-Simple text editor for your Markdown and LaTeX notes. [Try here](https://notes.dosilovic.com/?ACYZag8hSW8I4jwj0d5PtVA-2Jia).
+Simple text editor for your Markdown and LaTeX notes. [Try here](https://notes.dosilovic.com/?AJa14jr-DSbUkjcOMUDm_vpuWiZT).
 
 ## Dependencies
 

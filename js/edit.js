@@ -5,8 +5,10 @@ $(document).ready(function() {
   editor = CodeMirror.fromTextArea($("textarea")[0], {
     lineNumbers: true,
     lineWrapping: true,
-    gutter: true,
+    styleActiveLine: true,
+    autoCloseBrackets: true,
     keyMap: Storage.get("keyMap") || "default",
+    extraKeys: { "Enter": "newlineAndIndentContinueMarkdownList" },
     mode: "text/x-markdown"
   });
   

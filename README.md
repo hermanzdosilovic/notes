@@ -1,5 +1,7 @@
 # Markdown Notes
 
+![screenshoot](https://raw.githubusercontent.com/hermanzdosilovic/notes/master/.github/screenshoot.png)
+
 Simple text editor for your Markdown and LaTeX notes. [Try here](https://notes.dosilovic.com/?AJa14jr-DSbUkjcOMUDm_vpuWiZT).
 
 ## Dependencies

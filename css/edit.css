@@ -9,6 +9,10 @@ body {
   min-height: 100%;
 }
 
+.CodeMirror-ruler {
+  z-index: 1;
+}
+
 #editor {
   padding-top: 0;
   padding-bottom: 0;

@@ -6,6 +6,11 @@ $(document).ready(function() {
     lineNumbers: true,
     lineWrapping: true,
     styleActiveLine: true,
+    rulers: [
+      { color: "rgba(34,36,38,.15)", column: 80, lineStyle: "dashed" },
+      { color: "rgba(34,36,38,.15)", column: 100, lineStyle: "dashed" },
+      { color: "rgba(34,36,38,.15)", column: 120, lineStyle: "dashed" }
+    ],
     autoCloseBrackets: true,
     keyMap: Storage.get("keyMap") || "default",
     extraKeys: { "Enter": "newlineAndIndentContinueMarkdownList" },

@@ -1,12 +1,27 @@
+var PB_URL = "https://pb.judge0.com";
+
+function encode(str) {
+  return btoa(unescape(encodeURIComponent(str)));
+}
+
+function decode(bytes) {
+  var escaped = escape(atob(bytes));
+  try {
+    return decodeURIComponent(escaped);
+  } catch {
+    return unescape(escaped);
+  }
+}
+
 function Cloud() {
 }
 
 Cloud.load = function(successCallback, errorCallback) {
   $.ajax({
-    url: "https://ptpb.pw/" + getIdFromURI(),
+    url: PB_URL + "/" + getIdFromURI(),
     type: "GET",
     success: function(data, textStatus, jqXHR) {
-      successCallback(decodeURIComponent(escape(atob(data["note"] || ""))));
+      successCallback(decode(data["note"] || ""));
     },
     error: function(jqXHR, textStatus, errorThrown) {
       errorCallback();
@@ -16,16 +31,16 @@ Cloud.load = function(successCallback, errorCallback) {
 
 Cloud.save = function(content, successCallback, errorCallback) {
   var content = JSON.stringify({
-    note: btoa(unescape(encodeURIComponent(content)))
+    note: encode(content)
   });
   var filename = "note.json";
   var data = {
     content: content,
     filename: filename
   };
-  
+
   $.ajax({
-    url: "https://ptpb.pw",
+    url: PB_URL,
     type: "POST",
     async: true,
     headers: {

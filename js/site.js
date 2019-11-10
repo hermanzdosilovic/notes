@@ -123,7 +123,17 @@ md.use(function (md) {
 });
 
 function getIdFromURI() {
-  return location.search.substr(1).trim();
+  var id = location.search.substr(1).trim();
+  if (id === "") {
+    var cookies = document.cookie.split(", ");
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i].split("=");
+      if (cookie[0] == "NoteId") {
+        return cookie[1];
+      }
+    }
+  }
+  return id;
 }
 
 function renderPreview(noteContent, targetElement) {

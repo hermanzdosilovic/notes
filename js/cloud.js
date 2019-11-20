@@ -48,7 +48,7 @@ Cloud.save = function(content, successCallback, errorCallback) {
     },
     data: data,
     success: function(data, textStatus, jqXHR) {
-      successCallback(data["long"]);
+      successCallback(data["short"]);
     },
     error: function(jqXHR, textStatus, errorThrown) {
       errorCallback();

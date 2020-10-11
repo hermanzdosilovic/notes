@@ -1,4 +1,4 @@
-var PB_URL = "https://pb.judge0.com";
+var PB_URL = "https://pb.dosilovic.com";
 
 function encode(str) {
   return btoa(unescape(encodeURIComponent(str)));

@@ -47,6 +47,9 @@ Cloud.save = function(content, successCallback, errorCallback) {
       "Accept": "application/json"
     },
     data: data,
+    xhrFields: {
+      withCredentials: true
+    },
     success: function(data, textStatus, jqXHR) {
       successCallback(data["short"]);
     },
